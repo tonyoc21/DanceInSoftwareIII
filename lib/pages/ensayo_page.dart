@@ -12,7 +12,7 @@ class _EnsayoPageState extends State<EnsayoPage> {
     return WillPopScope(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Agregar Academia"),
+          title: Text("Bienvenido a DanceIn"),
         ),
         body: SingleChildScrollView(
           child: Container(

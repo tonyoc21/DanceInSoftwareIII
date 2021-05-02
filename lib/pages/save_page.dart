@@ -153,7 +153,7 @@ class _SavePageState extends State<SavePage> {
                 }
                 return null;
               },
-              //maxLines: 8,
+              maxLines: 8,
               maxLength: 1000,
               decoration: InputDecoration(
                   labelText: "Descripción Academia",

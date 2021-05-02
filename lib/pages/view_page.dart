@@ -1,4 +1,4 @@
-import 'package:crud/db/operation.dart';
+
 import 'package:crud/models/academia.dart';
 import 'package:flutter/material.dart';
 
@@ -34,15 +34,17 @@ class _ViewPageState extends State<ViewPage> {
         child: Form(
           key: _formKey,
           child: Column(children: <Widget>[
-            Text(academia.descripcion),
+            Text("Estilo de Baile: " + academia.estilo),
             SizedBox(height: 15),
-            Text(academia.estilo),
+            Text("Ciudad: " + academia.ciudad),
             SizedBox(height: 15),
-            Text(academia.ciudad),
+            Text("Celular: " + academia.celular),
             SizedBox(height: 15),
-            Text(academia.celular),
+            Text("Correo Electrónico: " + academia.email),
             SizedBox(height: 15),
-            Text(academia.email),
+            Text("Teléfono: " + academia.telefono),
+            SizedBox(height: 15),
+            Text("Descripción: " + academia.descripcion),
             SizedBox(height: 15),
           ]),
         ));
