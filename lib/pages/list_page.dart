@@ -5,12 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:crud/db/operation.dart';
 
 class ListPage extends StatelessWidget {
-
-  static const String ROUTE = "/";
-  
   Widget build(BuildContext context) {
     return _MyList();
-  }  
+  }
 }
 
 class _MyList extends StatefulWidget {
@@ -19,28 +16,31 @@ class _MyList extends StatefulWidget {
 }
 
 class _MyListState extends State<_MyList> {
-    List<Academia> danceIn = [];
+  List<Academia> danceIn = [];
 
-    @override
-    void initState() {
-      _loadData();
+  @override
+  void initState() {
+    _loadData();
 
-      super.initState();
-    }
+    super.initState();
+  }
 
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-           onPressed: (){
-            Navigator.pushNamed(context,SavePage.ROUTE,arguments: Academia.empty()).then((value) => setState((){
-              _loadData();
-            }));
-          },
+        onPressed: () {
+          Navigator.pushNamed(context, "/save", arguments: Academia.empty())
+              .then((value) => setState(() {
+                    _loadData();
+                  }));
+        },
       ),
-      appBar: AppBar(title: Text("Lista de Academias"),),
+      appBar: AppBar(
+        title: Text("Lista de Academias"),
+      ),
       body: Container(
-        child:  ListView.builder(
+        child: ListView.builder(
           itemCount: danceIn.length,
           itemBuilder: (_, i) => _createItem(i),
         ),
@@ -52,7 +52,7 @@ class _MyListState extends State<_MyList> {
     List<Academia> auxNote = await Operation.listarAcademias();
 
     setState(() {
-       danceIn = auxNote;
+      danceIn = auxNote;
     });
   }
 
@@ -62,24 +62,26 @@ class _MyListState extends State<_MyList> {
       direction: DismissDirection.startToEnd,
       background: Container(
         color: Colors.red,
-        padding: EdgeInsets.only(left:10),
-        child:Align(
-          alignment: Alignment.centerLeft,
-          child: Icon(Icons.delete, color: Colors.white)),
+        padding: EdgeInsets.only(left: 10),
+        child: Align(
+            alignment: Alignment.centerLeft,
+            child: Icon(Icons.delete, color: Colors.white)),
       ),
-      onDismissed: (direction){
+      onDismissed: (direction) {
         print("Academia Eliminada");
         Operation.delete(danceIn[i]);
       },
-      child:ListTile(
+      child: ListTile(
         title: Text(danceIn[i].nombre),
         trailing: MaterialButton(
-          onPressed: (){
-            Navigator.pushNamed(context, SavePage.ROUTE, arguments: danceIn[i]).then((value) => setState((){
-              _loadData();
-            }));
+          onPressed: () {
+            Navigator.pushNamed(context, "/save", arguments: danceIn[i])
+                .then((value) => setState(() {
+                      _loadData();
+                    }));
           },
-          child: Icon(Icons.edit),),
+          child: Icon(Icons.edit),
+        ),
       ),
     );
   }
