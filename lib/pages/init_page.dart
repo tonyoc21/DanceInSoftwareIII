@@ -26,7 +26,7 @@ class _MyListState extends State<_MyList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Dance In - Academias"),
+        title: Text("Dance In - Academias", style: TextStyle(fontSize: 35, fontFamily: 'DancingScript'),),
       ),
       body: Container(
         child: ListView.builder(
@@ -49,7 +49,7 @@ class _MyListState extends State<_MyList> {
     return Container(
       key: Key(i.toString()),
       child: ListTile(
-        title: Text(danceIn[i].nombre),
+        title: Text(danceIn[i].nombre,style: TextStyle(fontFamily: 'CrimsonText', fontSize: 25, fontWeight: FontWeight.bold)),
         trailing: MaterialButton(
             onPressed: () {
               Navigator.pushNamed(context, "/view", arguments: danceIn[i])
@@ -57,7 +57,8 @@ class _MyListState extends State<_MyList> {
                         _loadData();
                       }));
             },
-            child: Icon(Icons.view_sidebar)),
+            child: Icon(Icons.remove_red_eye_outlined, color: Colors.red[900])
+        ),
       ),
     );
   }

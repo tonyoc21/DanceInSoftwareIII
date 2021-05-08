@@ -1,6 +1,4 @@
-//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:crud/models/academia.dart';
-import 'package:crud/pages/save_page.dart';
 import 'package:flutter/material.dart';
 import 'package:crud/db/operation.dart';
 
@@ -28,7 +26,7 @@ class _MyListState extends State<_MyList> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: Icon(Icons.person_add_alt_1),
         onPressed: () {
           Navigator.pushNamed(context, "/save", arguments: Academia.empty())
               .then((value) => setState(() {
@@ -37,7 +35,7 @@ class _MyListState extends State<_MyList> {
         },
       ),
       appBar: AppBar(
-        title: Text("Lista de Academias"),
+        title: Text("Academias (Administrador)", style: TextStyle(fontSize: 32.5, fontFamily: 'DancingScript'),),
       ),
       body: Container(
         child: ListView.builder(
@@ -61,7 +59,7 @@ class _MyListState extends State<_MyList> {
       key: Key(i.toString()),
       direction: DismissDirection.startToEnd,
       background: Container(
-        color: Colors.red,
+        color: Colors.red[900],
         padding: EdgeInsets.only(left: 10),
         child: Align(
             alignment: Alignment.centerLeft,
@@ -72,7 +70,7 @@ class _MyListState extends State<_MyList> {
         Operation.delete(danceIn[i]);
       },
       child: ListTile(
-        title: Text(danceIn[i].nombre),
+        title: Text(danceIn[i].nombre, style: TextStyle(fontFamily: 'CrimsonText', fontSize: 25, fontWeight: FontWeight.bold)),
         trailing: MaterialButton(
           onPressed: () {
             Navigator.pushNamed(context, "/save", arguments: danceIn[i])
@@ -80,7 +78,7 @@ class _MyListState extends State<_MyList> {
                       _loadData();
                     }));
           },
-          child: Icon(Icons.edit),
+          child: Icon(Icons.edit, color: Colors.red[900]),
         ),
       ),
     );

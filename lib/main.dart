@@ -19,12 +19,6 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.grey[900],
         accentColor: Colors.red[900],
       ),
-      //initialRoute: LoginAdminPage.ROUTE,
-      //routes: {
-      //  LoginAdminPage.ROUTE: (_) => LoginAdminPage(),
-      //  ListPage.ROUTE: (_) => ListPage(),
-      //  SavePage.ROUTE: (_) => SavePage()
-      //},
 
       initialRoute: "/ensayo",
       routes: {

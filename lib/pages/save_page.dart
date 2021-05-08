@@ -32,7 +32,7 @@ class _SavePageState extends State<SavePage> {
       onWillPop: _onWillPopScore,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Agregar Academia"),
+          title: Text("Agregar Academia", style: TextStyle(fontSize: 35, fontFamily: 'DancingScript'),),
         ),
         body: SingleChildScrollView(
           child: Container(
@@ -69,6 +69,7 @@ class _SavePageState extends State<SavePage> {
               },
               decoration: InputDecoration(
                   labelText: "Nombre Academia",
+                  icon: Icon(Icons.person, color: Colors.red[900]),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20)))),
             ),
@@ -83,6 +84,7 @@ class _SavePageState extends State<SavePage> {
               },
               decoration: InputDecoration(
                   labelText: "Estilo de Baile",
+                  icon: Icon(Icons.directions_run_rounded, color: Colors.red[900]),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20)))),
             ),
@@ -97,6 +99,7 @@ class _SavePageState extends State<SavePage> {
               },
               decoration: InputDecoration(
                   labelText: "Ciudad",
+                  icon: Icon(Icons.location_city_outlined, color: Colors.red[900]),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20)))),
             ),
@@ -112,6 +115,7 @@ class _SavePageState extends State<SavePage> {
               maxLength: 7,
               decoration: InputDecoration(
                   labelText: "Teléfono",
+                  icon: Icon(Icons.phone, color: Colors.red[900]),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20)))),
             ),
@@ -127,6 +131,7 @@ class _SavePageState extends State<SavePage> {
               maxLength: 10,
               decoration: InputDecoration(
                   labelText: "Celular",
+                  icon: Icon(Icons.phone_android, color: Colors.red[900]),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20)))),
             ),
@@ -141,6 +146,7 @@ class _SavePageState extends State<SavePage> {
               },
               decoration: InputDecoration(
                   labelText: "Correo Electrónico",
+                  icon: Icon(Icons.email_rounded, color: Colors.red[900]),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20)))),
             ),
@@ -157,11 +163,18 @@ class _SavePageState extends State<SavePage> {
               maxLength: 1000,
               decoration: InputDecoration(
                   labelText: "Descripción Academia",
+                  icon: Icon(Icons.note_rounded, color: Colors.red[900]),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20)))),
             ),
-            RaisedButton(
-                child: Text("Guardar"),
+            new SizedBox(
+                width: 130,
+                height: 45,
+                child: RaisedButton(
+                child: Text("Guardar", style: TextStyle(fontFamily: 'CrimsonText', fontSize: 24, fontWeight: FontWeight.bold)),
+                  color: Colors.red[900],
+                  splashColor: Colors.grey[900],
+                  textColor: Colors.white,
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     if (academia.id != null) {
@@ -187,9 +200,12 @@ class _SavePageState extends State<SavePage> {
                         nombreController.text +
                         " agregada con éxito");
                   }
-                })
+                }
+              )
+            )
           ]),
-        ));
+      )
+    );
   }
 
   Future<bool> _onWillPopScore() {
