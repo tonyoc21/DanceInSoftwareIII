@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:crud/db/operation.dart';
 
 class ListPage extends StatelessWidget {
+  @override
   Widget build(BuildContext context) {
     return _MyList();
   }
@@ -23,19 +24,23 @@ class _MyListState extends State<_MyList> {
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.person_add_alt_1),
+        child: const Icon(Icons.person_add_alt_1),
         onPressed: () {
-          Navigator.pushNamed(context, "/save", arguments: Academia.empty())
+          Navigator.pushNamed(context, '/save', arguments: Academia.empty())
               .then((value) => setState(() {
                     _loadData();
                   }));
         },
       ),
       appBar: AppBar(
-        title: Text("Academias (Administrador)", style: TextStyle(fontSize: 32.5, fontFamily: 'DancingScript'),),
+        title: const Text(
+          'Academias (Administrador)',
+          style: TextStyle(fontSize: 32.5, fontFamily: 'DancingScript'),
+        ),
       ),
       body: Container(
         child: ListView.builder(
@@ -46,8 +51,10 @@ class _MyListState extends State<_MyList> {
     );
   }
 
+  // ignore: always_declare_return_types
   _loadData() async {
-    List<Academia> auxNote = await Operation.listarAcademias();
+    List<Academia> auxNote;
+    auxNote = await Operation.listarAcademias();
 
     setState(() {
       danceIn = auxNote;
@@ -60,20 +67,25 @@ class _MyListState extends State<_MyList> {
       direction: DismissDirection.startToEnd,
       background: Container(
         color: Colors.red[900],
-        padding: EdgeInsets.only(left: 10),
-        child: Align(
+        padding: const EdgeInsets.only(left: 10),
+        child: const Align(
             alignment: Alignment.centerLeft,
             child: Icon(Icons.delete, color: Colors.white)),
       ),
       onDismissed: (direction) {
-        print("Academia Eliminada");
+        // ignore: avoid_print
+        print('Academia Eliminada');
         Operation.delete(danceIn[i]);
       },
       child: ListTile(
-        title: Text(danceIn[i].nombre, style: TextStyle(fontFamily: 'CrimsonText', fontSize: 25, fontWeight: FontWeight.bold)),
+        title: Text(danceIn[i].nombre,
+            style: const TextStyle(
+                fontFamily: 'CrimsonText',
+                fontSize: 25,
+                fontWeight: FontWeight.bold)),
         trailing: MaterialButton(
           onPressed: () {
-            Navigator.pushNamed(context, "/save", arguments: danceIn[i])
+            Navigator.pushNamed(context, '/save', arguments: danceIn[i])
                 .then((value) => setState(() {
                       _loadData();
                     }));

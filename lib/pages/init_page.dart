@@ -26,7 +26,10 @@ class _MyListState extends State<_MyList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Dance In - Academias", style: TextStyle(fontSize: 35, fontFamily: 'DancingScript'),),
+        title: const Text(
+          'Dance In - Academias',
+          style: TextStyle(fontSize: 35, fontFamily: 'DancingScript'),
+        ),
       ),
       body: Container(
         child: ListView.builder(
@@ -37,28 +40,34 @@ class _MyListState extends State<_MyList> {
     );
   }
 
+  // ignore: always_declare_return_types
   _loadData() async {
-    List<Academia> auxNote = await Operation.listarAcademias();
+    List<Academia> auxNote;
+    auxNote = await Operation.listarAcademias();
 
     setState(() {
       danceIn = auxNote;
     });
   }
 
+  // ignore: always_declare_return_types
   _createItem(int i) {
     return Container(
       key: Key(i.toString()),
       child: ListTile(
-        title: Text(danceIn[i].nombre,style: TextStyle(fontFamily: 'CrimsonText', fontSize: 25, fontWeight: FontWeight.bold)),
+        title: Text(danceIn[i].nombre,
+            style: const TextStyle(
+                fontFamily: 'CrimsonText',
+                fontSize: 25,
+                fontWeight: FontWeight.bold)),
         trailing: MaterialButton(
             onPressed: () {
-              Navigator.pushNamed(context, "/view", arguments: danceIn[i])
+              Navigator.pushNamed(context, '/view', arguments: danceIn[i])
                   .then((value) => setState(() {
                         _loadData();
                       }));
             },
-            child: Icon(Icons.remove_red_eye_outlined, color: Colors.red[900])
-        ),
+            child: Icon(Icons.remove_red_eye_outlined, color: Colors.red[900])),
       ),
     );
   }

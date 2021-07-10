@@ -32,7 +32,10 @@ class _SavePageState extends State<SavePage> {
       onWillPop: _onWillPopScore,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Agregar Academia", style: TextStyle(fontSize: 35, fontFamily: 'DancingScript'),),
+          title: const Text(
+            'Agregar Academia',
+            style: TextStyle(fontSize: 35, fontFamily: 'DancingScript'),
+          ),
         ),
         body: SingleChildScrollView(
           child: Container(
@@ -43,6 +46,7 @@ class _SavePageState extends State<SavePage> {
     );
   }
 
+  // ignore: always_declare_return_types
   _init(Academia academia) {
     nombreController.text = academia.nombre;
     estiloController.text = academia.estilo;
@@ -55,7 +59,7 @@ class _SavePageState extends State<SavePage> {
 
   Widget _buildForm(Academia academia) {
     return Container(
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         child: Form(
           key: _formKey,
           child: Column(children: <Widget>[
@@ -63,164 +67,173 @@ class _SavePageState extends State<SavePage> {
               controller: nombreController,
               validator: (value) {
                 if (value.isEmpty) {
-                  return "No ha ingresado dato";
+                  return 'No ha ingresado dato';
                 }
                 return null;
               },
               decoration: InputDecoration(
-                  labelText: "Nombre Academia",
+                  labelText: 'Nombre Academia',
                   icon: Icon(Icons.person, color: Colors.red[900]),
-                  border: OutlineInputBorder(
+                  border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20)))),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             TextFormField(
               controller: estiloController,
               validator: (value) {
                 if (value.isEmpty) {
-                  return "No ha ingresado dato";
+                  return 'No ha ingresado dato';
                 }
                 return null;
               },
               decoration: InputDecoration(
-                  labelText: "Estilo de Baile",
-                  icon: Icon(Icons.directions_run_rounded, color: Colors.red[900]),
-                  border: OutlineInputBorder(
+                  labelText: 'Estilo de Baile',
+                  icon: Icon(Icons.directions_run_rounded,
+                      color: Colors.red[900]),
+                  border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20)))),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             TextFormField(
               controller: ciudadController,
               validator: (value) {
                 if (value.isEmpty) {
-                  return "No ha ingresado dato";
+                  return 'No ha ingresado dato';
                 }
                 return null;
               },
               decoration: InputDecoration(
-                  labelText: "Ciudad",
-                  icon: Icon(Icons.location_city_outlined, color: Colors.red[900]),
-                  border: OutlineInputBorder(
+                  labelText: 'Ciudad',
+                  icon: Icon(Icons.location_city_outlined,
+                      color: Colors.red[900]),
+                  border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20)))),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             TextFormField(
               controller: telefonoController,
               validator: (value) {
                 if (value.isEmpty) {
-                  return "No ha ingresado dato";
+                  return 'No ha ingresado dato';
                 }
                 return null;
               },
               maxLength: 7,
               decoration: InputDecoration(
-                  labelText: "Teléfono",
+                  labelText: 'Teléfono',
                   icon: Icon(Icons.phone, color: Colors.red[900]),
-                  border: OutlineInputBorder(
+                  border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20)))),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             TextFormField(
               controller: celularController,
               validator: (value) {
                 if (value.isEmpty) {
-                  return "No ha ingresado dato";
+                  return 'No ha ingresado dato';
                 }
                 return null;
               },
               maxLength: 10,
               decoration: InputDecoration(
-                  labelText: "Celular",
+                  labelText: 'Celular',
                   icon: Icon(Icons.phone_android, color: Colors.red[900]),
-                  border: OutlineInputBorder(
+                  border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20)))),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             TextFormField(
               controller: emailController,
               validator: (value) {
                 if (value.isEmpty) {
-                  return "No ha ingresado dato";
+                  return 'No ha ingresado dato';
                 }
                 return null;
               },
               decoration: InputDecoration(
-                  labelText: "Correo Electrónico",
+                  labelText: 'Correo Electrónico',
                   icon: Icon(Icons.email_rounded, color: Colors.red[900]),
-                  border: OutlineInputBorder(
+                  border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20)))),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             TextFormField(
               controller: descripcionController,
               validator: (value) {
                 if (value.isEmpty) {
-                  return "No ha ingresado dato";
+                  return 'No ha ingresado dato';
                 }
                 return null;
               },
               maxLines: 8,
               maxLength: 1000,
               decoration: InputDecoration(
-                  labelText: "Descripción Academia",
+                  labelText: 'Descripción Academia',
                   icon: Icon(Icons.note_rounded, color: Colors.red[900]),
-                  border: OutlineInputBorder(
+                  border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20)))),
             ),
+            // ignore: unnecessary_new
             new SizedBox(
                 width: 130,
                 height: 45,
+                // ignore: deprecated_member_use
                 child: RaisedButton(
-                child: Text("Guardar", style: TextStyle(fontFamily: 'CrimsonText', fontSize: 24, fontWeight: FontWeight.bold)),
-                  color: Colors.red[900],
-                  splashColor: Colors.grey[900],
-                  textColor: Colors.white,
-                onPressed: () {
-                  if (_formKey.currentState.validate()) {
-                    if (academia.id != null) {
-                      academia.nombre = nombreController.text;
-                      academia.estilo = estiloController.text;
-                      academia.ciudad = ciudadController.text;
-                      academia.telefono = telefonoController.text;
-                      academia.celular = celularController.text;
-                      academia.email = emailController.text;
-                      academia.descripcion = descripcionController.text;
-                      Operation.update(academia);
-                    } else {
-                      Operation.insert(Academia(
-                          nombre: nombreController.text,
-                          estilo: estiloController.text,
-                          ciudad: ciudadController.text,
-                          telefono: telefonoController.text,
-                          celular: celularController.text,
-                          email: emailController.text,
-                          descripcion: descripcionController.text));
-                    }
-                    print("La Academia llamada: " +
-                        nombreController.text +
-                        " agregada con éxito");
-                  }
-                }
-              )
-            )
+                    // ignore: sort_child_properties_last
+                    child: const Text('Guardar',
+                        style: TextStyle(
+                            fontFamily: 'CrimsonText',
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold)),
+                    color: Colors.red[900],
+                    splashColor: Colors.grey[900],
+                    textColor: Colors.white,
+                    onPressed: () {
+                      if (_formKey.currentState.validate()) {
+                        if (academia.id != null) {
+                          academia.nombre = nombreController.text;
+                          academia.estilo = estiloController.text;
+                          academia.ciudad = ciudadController.text;
+                          academia.telefono = telefonoController.text;
+                          academia.celular = celularController.text;
+                          academia.email = emailController.text;
+                          academia.descripcion = descripcionController.text;
+                          Operation.update(academia);
+                        } else {
+                          Operation.insert(Academia(
+                              nombre: nombreController.text,
+                              estilo: estiloController.text,
+                              ciudad: ciudadController.text,
+                              telefono: telefonoController.text,
+                              celular: celularController.text,
+                              email: emailController.text,
+                              descripcion: descripcionController.text));
+                        }
+                        // ignore: avoid_print
+                        print(
+                            'La Academia llamada: ${nombreController.text} agregada con éxito');
+                      }
+                    }))
           ]),
-      )
-    );
+        ));
   }
 
   Future<bool> _onWillPopScore() {
     return showDialog<bool>(
         builder: (context) => AlertDialog(
-              title: Text("¿Seguro que quieres regresar a la página anterior?"),
-              content: Text("Podría tener cambios sin guardar"),
+              title: const Text(
+                  '¿Seguro que quieres regresar a la página anterior?'),
+              content: const Text('Podría tener cambios sin guardar'),
               actions: [
+                // ignore: deprecated_member_use
                 FlatButton(
                   onPressed: () => Navigator.of(context).pop(false),
-                  child: Text("No"),
+                  child: const Text('No'),
                 ),
+                // ignore: deprecated_member_use
                 FlatButton(
                   onPressed: () => Navigator.of(context).pop(true),
-                  child: Text("Si"),
+                  child: const Text('Si'),
                 )
               ],
             ),

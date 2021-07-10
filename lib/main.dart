@@ -10,6 +10,7 @@ void main() {
   runApp(MyApp());
 }
 
+// ignore: public_member_api_docs
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -19,15 +20,14 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.grey[900],
         accentColor: Colors.red[900],
       ),
-
-      initialRoute: "/ensayo",
+      initialRoute: '/ensayo',
       routes: {
-        "/login": (BuildContext context) => LoginAdminPage(),
-        "/init": (BuildContext context) => InitPage(),
-        "/list": (BuildContext context) => ListPage(),
-        "/save": (BuildContext context) => SavePage(),
-        "/view": (BuildContext context) => ViewPage(),
-        "/ensayo": (BuildContext context) => EnsayoPage()
+        '/login': (BuildContext context) => LoginAdminPage(),
+        '/init': (BuildContext context) => InitPage(),
+        '/list': (BuildContext context) => ListPage(),
+        '/save': (BuildContext context) => SavePage(),
+        '/view': (BuildContext context) => ViewPage(),
+        '/ensayo': (BuildContext context) => EnsayoPage()
       },
     );
   }
