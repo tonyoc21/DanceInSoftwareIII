@@ -40,6 +40,7 @@ class _LoginAdminPageState extends State<LoginAdminPage> {
           child: Column(children: <Widget>[
             SizedBox(height: 150),
             TextFormField(
+              key: Key('nombreAdmin'),
               controller: usuarioController,
               validator: (value) {
                 if (value.isEmpty) {
@@ -55,6 +56,7 @@ class _LoginAdminPageState extends State<LoginAdminPage> {
             ),
             SizedBox(height: 30),
             TextFormField(
+              key: Key('contraAdmin'),
               controller: contrasenaController,
               enableInteractiveSelection: false,
               obscureText: true,
@@ -75,6 +77,7 @@ class _LoginAdminPageState extends State<LoginAdminPage> {
               width: 170,
               height: 45,
               child: RaisedButton(
+                key: Key('EntrarBoton'),
                 child: Text("Entrar", style: TextStyle(fontFamily: 'CrimsonText', fontSize: 22.5, fontWeight: FontWeight.bold)),
                   color: Colors.red[900],
                   splashColor: Colors.grey[900],

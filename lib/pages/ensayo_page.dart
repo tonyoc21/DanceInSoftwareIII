@@ -35,6 +35,7 @@ class _EnsayoPageState extends State<EnsayoPage> {
                 width: 170,
                 height: 45,
                 child: RaisedButton(
+                  key: Key('AdministradorBoton'),
                   child: Text("Administrador", style: TextStyle(fontFamily: 'CrimsonText', fontSize: 21.5, fontWeight: FontWeight.bold)),
                   color: Colors.red[900],
                   splashColor: Colors.grey[900],
