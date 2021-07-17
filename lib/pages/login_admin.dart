@@ -83,7 +83,7 @@ class _LoginAdminPageState extends State<LoginAdminPage> {
                   if (_formKey.currentState.validate()) {
                     if (usuarioController.text == usuario &&
                         contrasenaController.text == contrasena) {
-                      Navigator.of(context).pushNamed("/list");
+                      Navigator.of(context).pushNamed("/choose");
                     } else {
                       _onWillPopScore();
                     }
