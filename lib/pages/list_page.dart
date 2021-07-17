@@ -26,6 +26,7 @@ class _MyListState extends State<_MyList> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+        key: Key('crearButon'),
         child: Icon(Icons.person_add_alt_1),
         onPressed: () {
           Navigator.pushNamed(context, "/save", arguments: Academia.empty())

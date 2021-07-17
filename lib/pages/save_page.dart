@@ -60,6 +60,7 @@ class _SavePageState extends State<SavePage> {
           key: _formKey,
           child: Column(children: <Widget>[
             TextFormField(
+              key: Key('nombre'),
               controller: nombreController,
               validator: (value) {
                 if (value.isEmpty) {
@@ -75,6 +76,7 @@ class _SavePageState extends State<SavePage> {
             ),
             SizedBox(height: 15),
             TextFormField(
+              key: Key('estiloBaile'),
               controller: estiloController,
               validator: (value) {
                 if (value.isEmpty) {
@@ -90,6 +92,7 @@ class _SavePageState extends State<SavePage> {
             ),
             SizedBox(height: 15),
             TextFormField(
+              key: Key('ciudad'),
               controller: ciudadController,
               validator: (value) {
                 if (value.isEmpty) {
@@ -105,6 +108,7 @@ class _SavePageState extends State<SavePage> {
             ),
             SizedBox(height: 15),
             TextFormField(
+              key: Key('telefono'),
               controller: telefonoController,
               validator: (value) {
                 if (value.isEmpty) {
@@ -121,6 +125,7 @@ class _SavePageState extends State<SavePage> {
             ),
             SizedBox(height: 15),
             TextFormField(
+              key: Key('celular'),
               controller: celularController,
               validator: (value) {
                 if (value.isEmpty) {
@@ -137,6 +142,7 @@ class _SavePageState extends State<SavePage> {
             ),
             SizedBox(height: 15),
             TextFormField(
+              key: Key('correo'),
               controller: emailController,
               validator: (value) {
                 if (value.isEmpty) {
@@ -152,6 +158,7 @@ class _SavePageState extends State<SavePage> {
             ),
             SizedBox(height: 15),
             TextFormField(
+               key: Key('descripcion'),
               controller: descripcionController,
               validator: (value) {
                 if (value.isEmpty) {
@@ -171,6 +178,7 @@ class _SavePageState extends State<SavePage> {
                 width: 130,
                 height: 45,
                 child: RaisedButton(
+                  key: Key('guardarBoton'),
                 child: Text("Guardar", style: TextStyle(fontFamily: 'CrimsonText', fontSize: 24, fontWeight: FontWeight.bold)),
                   color: Colors.red[900],
                   splashColor: Colors.grey[900],
