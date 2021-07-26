@@ -1,45 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:crud/pages/login_admin.dart';
 
-class LoginAdminPage extends StatefulWidget {
-  static const String ROUTE = "/admin";
-
-  String usuario;
-  String contrasena;
-
-  LoginAdminPage(this.usuario, this.contrasena);
-
+class PasswordPage extends StatefulWidget {
   @override
-  _LoginAdminPageState createState() => _LoginAdminPageState();
+  _PasswordPageState createState() => _PasswordPageState();
 }
 
-class _LoginAdminPageState extends State<LoginAdminPage> {
+class _PasswordPageState extends State<PasswordPage> {
   final _formKey = GlobalKey<FormState>();
-  final usuarioController = TextEditingController();
-  final contrasenaController = TextEditingController();
+
+  final contrasena1Controller = TextEditingController();
+  final contrasena2Controller = TextEditingController();
+  String usuario = 'admin';
 
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: null,
       child: Scaffold(
-          appBar: AppBar(
-            title: Text(
-              "Iniciar Sesión",
-              style: TextStyle(fontSize: 35, fontFamily: 'DancingScript'),
-            ),
+        appBar: AppBar(
+          title: Text(
+            "Cambiar contraseña",
+            style: TextStyle(fontSize: 35, fontFamily: 'DancingScript'),
           ),
-          body: Column(
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.all(20.0),
-                child: Image.asset('assets/Login.jpg'),
-                height: 150,
-                width: 120,
-              ),
-              Container(
-                child: _buildForm(),
-              ),
-            ],
-          )),
+        ),
+        body: SingleChildScrollView(
+          child: Container(
+            child: _buildForm(),
+          ),
+        ),
+      ),
     );
   }
 
@@ -50,26 +39,16 @@ class _LoginAdminPageState extends State<LoginAdminPage> {
         key: _formKey,
         child: Column(
           children: <Widget>[
-            SizedBox(height: 10),
-            TextFormField(
-              key: Key('nombreAdmin'),
-              controller: usuarioController,
-              validator: (value) {
-                if (value.isEmpty) {
-                  return "No ha ingresado dato";
-                }
-                return null;
-              },
-              decoration: InputDecoration(
-                  labelText: "Usuario",
-                  icon: Icon(Icons.person, color: Colors.red[900]),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(0)))),
-            ),
+            SizedBox(height: 30),
+            Text("Crea una contraseña segura",
+                style: TextStyle(
+                    fontFamily: 'CrimsonText',
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold)),
             SizedBox(height: 30),
             TextFormField(
-              key: Key('contraAdmin'),
-              controller: contrasenaController,
+              key: Key('contranueva1'),
+              controller: contrasena1Controller,
               enableInteractiveSelection: false,
               obscureText: true,
               validator: (value) {
@@ -79,7 +58,26 @@ class _LoginAdminPageState extends State<LoginAdminPage> {
                 return null;
               },
               decoration: InputDecoration(
-                  labelText: "Contraseña",
+                  labelText: "Nueva Contraseña",
+                  icon: Icon(Icons.enhanced_encryption_outlined,
+                      color: Colors.red[900]),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(0)))),
+            ),
+            SizedBox(height: 30),
+            TextFormField(
+              key: Key('contranueva2'),
+              controller: contrasena2Controller,
+              enableInteractiveSelection: false,
+              obscureText: true,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return "No ha ingresado dato";
+                }
+                return null;
+              },
+              decoration: InputDecoration(
+                  labelText: "Repite Contraseña",
                   icon: Icon(Icons.enhanced_encryption_outlined,
                       color: Colors.red[900]),
                   border: OutlineInputBorder(
@@ -89,9 +87,10 @@ class _LoginAdminPageState extends State<LoginAdminPage> {
             new SizedBox(
               width: 170,
               height: 45,
+              // ignore: deprecated_member_use
               child: RaisedButton(
-                  key: Key('EntrarBoton'),
-                  child: Text("Entrar",
+                  key: Key('Boton'),
+                  child: Text("Guardar Contraseña",
                       style: TextStyle(
                           fontFamily: 'CrimsonText',
                           fontSize: 22.5,
@@ -101,33 +100,20 @@ class _LoginAdminPageState extends State<LoginAdminPage> {
                   textColor: Colors.white,
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
-                      if (usuarioController.text == widget.usuario &&
-                          contrasenaController.text == widget.contrasena) {
-                        Navigator.of(context).pushNamed("/choose");
+                      print(contrasena1Controller.text);
+                      if (contrasena1Controller.text ==
+                          contrasena2Controller.text) {
+                        Navigator.of(context).push(MaterialPageRoute<Null>(
+                            builder: (BuildContext context) {
+                          return new LoginAdminPage(
+                              'admin', contrasena2Controller.text);
+                        }));
                       } else {
                         _onWillPopScore();
                       }
                     }
                   }),
             ),
-            SizedBox(height: 10),
-            new SizedBox(
-              width: 250,
-              height: 20,
-              child: RaisedButton(
-                  key: Key('EntrarBoton'),
-                  child: Text("¿Has olvidado tu contraseña?",
-                      style: TextStyle(
-                          fontFamily: 'CrimsonText',
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold)),
-                  color: Colors.white,
-                  splashColor: Colors.grey[900],
-                  textColor: Colors.black,
-                  onPressed: () {
-                    Navigator.of(context).pushNamed("/choosePassword");
-                  }),
-            )
           ],
         ),
       ),
@@ -138,9 +124,9 @@ class _LoginAdminPageState extends State<LoginAdminPage> {
     return showDialog<bool>(
         builder: (context) => AlertDialog(
               title: Text("Acceso Denegado"),
-              content:
-                  Text("Usuario o Contraseña incorrecta. Intente nuevamente."),
+              content: Text("Usuario Incorrecto, intenta nuevamente."),
               actions: [
+                // ignore: deprecated_member_use
                 FlatButton(
                   onPressed: () => Navigator.of(context).pop(false),
                   child: Text("Aceptar"),

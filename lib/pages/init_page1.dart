@@ -1,8 +1,7 @@
-import 'package:crud/models/academia.dart';
+import 'package:crud/db/operation1.dart';
+import 'package:crud/models/evento.dart';
 import 'package:flutter/material.dart';
-import 'package:crud/db/operation.dart';
-
-class InitPage extends StatelessWidget {
+class InitPage1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return _MyList();
   }
@@ -14,7 +13,7 @@ class _MyList extends StatefulWidget {
 }
 
 class _MyListState extends State<_MyList> {
-  List<Academia> danceIn = [];
+  List<Evento> danceIn1 = [];
 
   @override
   void initState() {
@@ -26,11 +25,11 @@ class _MyListState extends State<_MyList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Dance In - Academias", style: TextStyle(fontSize: 35, fontFamily: 'DancingScript'),),
+        title: Text("Dance In - Eventos", style: TextStyle(fontSize: 35, fontFamily: 'DancingScript'),),
       ),
       body: Container(
         child: ListView.builder(
-          itemCount: danceIn.length,
+          itemCount: danceIn1.length,
           itemBuilder: (_, i) => _createItem(i),
         ),
       ),
@@ -38,10 +37,10 @@ class _MyListState extends State<_MyList> {
   }
 
   _loadData() async {
-    List<Academia> auxNote = await Operation.listarAcademias();
+    List<Evento> auxNote = await Operation1.listarEventos();
 
     setState(() {
-      danceIn = auxNote;
+      danceIn1 = auxNote;
     });
   }
 
@@ -49,10 +48,10 @@ class _MyListState extends State<_MyList> {
     return Container(
       key: Key(i.toString()),
       child: ListTile(
-        title: Text(danceIn[i].nombre,style: TextStyle(fontFamily: 'CrimsonText', fontSize: 25, fontWeight: FontWeight.bold)),
+        title: Text(danceIn1[i].nombre,style: TextStyle(fontFamily: 'CrimsonText', fontSize: 25, fontWeight: FontWeight.bold)),
         trailing: MaterialButton(
             onPressed: () {
-              Navigator.pushNamed(context, "/view", arguments: danceIn[i])
+              Navigator.pushNamed(context, "/view1", arguments: danceIn1[i])
                   .then((value) => setState(() {
                         _loadData();
                       }));

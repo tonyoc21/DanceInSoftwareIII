@@ -1,8 +1,8 @@
-import 'package:crud/models/academia.dart';
+import 'package:crud/models/evento.dart';
 import 'package:flutter/material.dart';
-import 'package:crud/db/operation.dart';
+import 'package:crud/db/operation1.dart';
 
-class ListPage extends StatelessWidget {
+class ListPage1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return _MyList();
   }
@@ -14,7 +14,7 @@ class _MyList extends StatefulWidget {
 }
 
 class _MyListState extends State<_MyList> {
-  List<Academia> danceIn = [];
+  List<Evento> danceIn1 = [];
 
   @override
   void initState() {
@@ -26,24 +26,20 @@ class _MyListState extends State<_MyList> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        key: Key('crearButon'),
-        child: Icon(Icons.person_add_alt_1),
+        child: Icon(Icons.library_add),
         onPressed: () {
-          Navigator.pushNamed(context, "/save", arguments: Academia.empty())
+          Navigator.pushNamed(context, "/save1", arguments: Evento.empty())
               .then((value) => setState(() {
                     _loadData();
                   }));
         },
       ),
       appBar: AppBar(
-        title: Text(
-          "Academias (Administrador)",
-          style: TextStyle(fontSize: 32.5, fontFamily: 'DancingScript'),
-        ),
+        title: Text("Eventos (Administrador)", style: TextStyle(fontSize: 32.5, fontFamily: 'DancingScript'),),
       ),
       body: Container(
         child: ListView.builder(
-          itemCount: danceIn.length,
+          itemCount: danceIn1.length,
           itemBuilder: (_, i) => _createItem(i),
         ),
       ),
@@ -51,10 +47,10 @@ class _MyListState extends State<_MyList> {
   }
 
   _loadData() async {
-    List<Academia> auxNote = await Operation.listarAcademias();
+    List<Evento> auxNote = await Operation1.listarEventos();
 
     setState(() {
-      danceIn = auxNote;
+      danceIn1 = auxNote;
     });
   }
 
@@ -70,18 +66,14 @@ class _MyListState extends State<_MyList> {
             child: Icon(Icons.delete, color: Colors.white)),
       ),
       onDismissed: (direction) {
-        print("Academia Eliminada");
-        Operation.delete(danceIn[i]);
+        print("Evento Eliminado");
+        Operation1.delete(danceIn1[i]);
       },
       child: ListTile(
-        title: Text(danceIn[i].nombre,
-            style: TextStyle(
-                fontFamily: 'CrimsonText',
-                fontSize: 25,
-                fontWeight: FontWeight.bold)),
+        title: Text(danceIn1[i].nombre, style: TextStyle(fontFamily: 'CrimsonText', fontSize: 25, fontWeight: FontWeight.bold)),
         trailing: MaterialButton(
           onPressed: () {
-            Navigator.pushNamed(context, "/save", arguments: danceIn[i])
+            Navigator.pushNamed(context, "/save1", arguments: danceIn1[i])
                 .then((value) => setState(() {
                       _loadData();
                     }));

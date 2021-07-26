@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class EnsayoPage extends StatefulWidget {
+class ChoosePagee extends StatefulWidget {
   @override
-  _EnsayoPageState createState() => _EnsayoPageState();
+  _ChoosePageeState createState() => _ChoosePageeState();
 }
 
-class _EnsayoPageState extends State<EnsayoPage> {
+class _ChoosePageeState extends State<ChoosePagee> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: _onWillPopScore,
       child: Scaffold(
           appBar: AppBar(
             title: Text(
-              "Bienvenido a DanceIn",
+              "Gestión de Servicios",
               style: TextStyle(fontSize: 35, fontFamily: 'DancingScript'),
             ),
           ),
@@ -20,7 +20,7 @@ class _EnsayoPageState extends State<EnsayoPage> {
             children: <Widget>[
               Container(
                 padding: EdgeInsets.all(20.0),
-                child: Image.asset('assets/LogoNegro.png'),
+                child: Image.asset('assets/LogoBlanco.png'),
                 height: 250,
                 width: 420,
               ),
@@ -28,7 +28,7 @@ class _EnsayoPageState extends State<EnsayoPage> {
                 child: _buildForm(),
               ),
             ],
-          )),
+          ),),
     );
   }
 
@@ -36,7 +36,7 @@ class _EnsayoPageState extends State<EnsayoPage> {
     return Container(
       child: Column(children: <Widget>[
         SizedBox(height: 50),
-        Text("¿Cómo desea ingresar al sistema?",
+        Text("¿Qué servicio desea gestionar?",
             style: TextStyle(
                 fontFamily: 'CrimsonText',
                 fontSize: 26,
@@ -47,8 +47,7 @@ class _EnsayoPageState extends State<EnsayoPage> {
           height: 45,
           // ignore: deprecated_member_use
           child: RaisedButton(
-              key: Key('AdministradorBoton'),
-              child: Text("Administrador",
+              child: Text("Academias",
                   style: TextStyle(
                       fontFamily: 'CrimsonText',
                       fontSize: 21.5,
@@ -57,7 +56,7 @@ class _EnsayoPageState extends State<EnsayoPage> {
               splashColor: Colors.grey[900],
               textColor: Colors.white,
               onPressed: () {
-                Navigator.pushNamed(context, "/login");
+                Navigator.pushNamed(context, "/list");
               }),
         ),
         SizedBox(height: 20),
@@ -66,7 +65,7 @@ class _EnsayoPageState extends State<EnsayoPage> {
             height: 45,
             // ignore: deprecated_member_use
             child: RaisedButton(
-                child: Text("Usuario",
+                child: Text("Eventos",
                     style: TextStyle(
                         fontFamily: 'CrimsonText',
                         fontSize: 21.5,
@@ -75,7 +74,7 @@ class _EnsayoPageState extends State<EnsayoPage> {
                 splashColor: Colors.grey[900],
                 textColor: Colors.white,
                 onPressed: () {
-                  Navigator.pushNamed(context, "/choose1");
+                  Navigator.pushNamed(context, "/list1");
                 }))
       ]),
     );

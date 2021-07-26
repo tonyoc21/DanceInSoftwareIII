@@ -1,55 +1,58 @@
-import 'package:crud/models/academia.dart';
+import 'package:crud/models/evento.dart';
 import 'package:flutter/material.dart';
 
-class ViewPage extends StatefulWidget {
+class ViewPage1 extends StatefulWidget {
   @override
-  _ViewPageState createState() => _ViewPageState();
+  _ViewPage1State createState() => _ViewPage1State();
 }
 
-class _ViewPageState extends State<ViewPage> {
+class _ViewPage1State extends State<ViewPage1> {
   Widget build(BuildContext context) {
-    Academia academia = ModalRoute.of(context).settings.arguments;
+    Evento evento = ModalRoute.of(context).settings.arguments;
 
     return WillPopScope(
       onWillPop: _onWillPopScore,
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            academia.nombre,
+            evento.nombre,
             style: TextStyle(fontSize: 35, fontFamily: 'DancingScript'),
           ),
         ),
         body: SingleChildScrollView(
           child: Container(
-            child: _buildForm(academia),
+            child: _buildForm(evento),
           ),
         ),
       ),
     );
   }
 
-  Widget _buildForm(Academia academia) {
+  Widget _buildForm(Evento evento) {
     return Container(
         padding: EdgeInsets.all(15),
         child: Form(
           child: Column(children: <Widget>[
             SizedBox(height: 20),
-            Text("Estilo de Baile:  " + academia.estilo,
+            Text("Organizador Evento:  " + evento.organizador,
                 style: TextStyle(fontFamily: 'CrimsonText', fontSize: 25)),
             SizedBox(height: 15),
-            Text("Ciudad:  " + academia.ciudad,
+            Text("Estilo:  " + evento.estilo,
                 style: TextStyle(fontFamily: 'CrimsonText', fontSize: 25)),
             SizedBox(height: 15),
-            Text("Celular:  " + academia.celular,
+            Text("Ciudad:  " + evento.ciudad,
                 style: TextStyle(fontFamily: 'CrimsonText', fontSize: 25)),
             SizedBox(height: 15),
-            Text("Correo Electrónico:  " + academia.email,
+            Text("Celular:  " + evento.celular,
                 style: TextStyle(fontFamily: 'CrimsonText', fontSize: 25)),
             SizedBox(height: 15),
-            Text("Teléfono:  " + academia.telefono,
+            Text("Fecha:  " + evento.fecha,
                 style: TextStyle(fontFamily: 'CrimsonText', fontSize: 25)),
             SizedBox(height: 15),
-            Text("Descripción:  " + academia.descripcion,
+            Text("Correo Electrónico:  " + evento.email,
+                style: TextStyle(fontFamily: 'CrimsonText', fontSize: 25)),
+            SizedBox(height: 15),
+            Text("Descripción:  " + evento.descripcion,
                 style: TextStyle(fontFamily: 'CrimsonText', fontSize: 25)),
             SizedBox(height: 15),
           ]),
