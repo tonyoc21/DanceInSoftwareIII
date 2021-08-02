@@ -25,10 +25,13 @@ class _MyListState extends State<_MyList> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      
       floatingActionButton: FloatingActionButton(
-        key: Key('crearButon'),
+        
         child: Icon(Icons.person_add_alt_1),
+        
         onPressed: () {
+          
           Navigator.pushNamed(context, "/save", arguments: Academia.empty())
               .then((value) => setState(() {
                     _loadData();
@@ -36,13 +39,18 @@ class _MyListState extends State<_MyList> {
         },
       ),
       appBar: AppBar(
+        
         title: Text(
+
           "Academias (Administrador)",
           style: TextStyle(fontSize: 32.5, fontFamily: 'DancingScript'),
+          
         ),
       ),
       body: Container(
+        
         child: ListView.builder(
+      
           itemCount: danceIn.length,
           itemBuilder: (_, i) => _createItem(i),
         ),
@@ -61,26 +69,35 @@ class _MyListState extends State<_MyList> {
   _createItem(int i) {
     return Dismissible(
       key: Key(i.toString()),
+      
       direction: DismissDirection.startToEnd,
       background: Container(
+        
         color: Colors.red[900],
         padding: EdgeInsets.only(left: 10),
         child: Align(
+            
             alignment: Alignment.centerLeft,
             child: Icon(Icons.delete, color: Colors.white)),
       ),
       onDismissed: (direction) {
+        
         print("Academia Eliminada");
         Operation.delete(danceIn[i]);
       },
       child: ListTile(
+        
+        key: Key('crearButon'),  
         title: Text(danceIn[i].nombre,
+        
             style: TextStyle(
                 fontFamily: 'CrimsonText',
                 fontSize: 25,
                 fontWeight: FontWeight.bold)),
         trailing: MaterialButton(
+        
           onPressed: () {
+            
             Navigator.pushNamed(context, "/save", arguments: danceIn[i])
                 .then((value) => setState(() {
                       _loadData();

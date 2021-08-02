@@ -47,6 +47,7 @@ class _ChoosePageeState extends State<ChoosePagee> {
           height: 45,
           // ignore: deprecated_member_use
           child: RaisedButton(
+              key: Key('EntrarAcademiasButon'),
               child: Text("Academias",
                   style: TextStyle(
                       fontFamily: 'CrimsonText',
@@ -65,6 +66,7 @@ class _ChoosePageeState extends State<ChoosePagee> {
             height: 45,
             // ignore: deprecated_member_use
             child: RaisedButton(
+              key: Key('EntrarEventosButon'),
                 child: Text("Eventos",
                     style: TextStyle(
                         fontFamily: 'CrimsonText',

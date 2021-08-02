@@ -115,7 +115,7 @@ class _LoginAdminPageState extends State<LoginAdminPage> {
               width: 250,
               height: 20,
               child: RaisedButton(
-                  key: Key('EntrarBoton'),
+                  key: Key('OlvidarBoton'),
                   child: Text("¿Has olvidado tu contraseña?",
                       style: TextStyle(
                           fontFamily: 'CrimsonText',
